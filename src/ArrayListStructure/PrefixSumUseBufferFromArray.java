@@ -10,22 +10,24 @@ public class PrefixSumUseBufferFromArray {
     static BufferedReader br;
     static StringTokenizer st;
 
-    static void sumFromArray(int arrLength, int calCount) throws Exception{
+    static void sumFromArray(int arrLength) throws Exception{
 
         st = new StringTokenizer(br.readLine());
         standArray = new int[arrLength+1];
         for(int i=1; i<=arrLength; i++){
-            standArray[i] = standArray[i-1]; Integer.parseInt(st.nextToken());
-        }
-
-        for (int j = 0; j < calCount; j++) {
-            st = new StringTokenizer(br.readLine());
-            int i = Integer.parseInt(st.nextToken());
-            int k = Integer.parseInt(st.nextToken());
-            System.out.println(standArray[j] - standArray[i - 1]);
+            standArray[i] = standArray[i-1] + Integer.parseInt(st.nextToken());
         }
     }
 
+    static void subtractArrayFromArray(int calCount) throws Exception{
+
+        for(int cal= 0; cal < calCount; cal++){
+            st =new StringTokenizer(br.readLine());
+            int behindNum = Integer.parseInt(st.nextToken());
+            int frontNum = Integer.parseInt(st.nextToken());
+            System.out.println(standArray[frontNum] - standArray[behindNum-1]);
+        }
+    }
     public static void main(String[] args) throws Exception{
 
         br = new BufferedReader(new InputStreamReader(System.in));
@@ -34,7 +36,7 @@ public class PrefixSumUseBufferFromArray {
         int arrLength = Integer.parseInt(st.nextToken());
         int calCount = Integer.parseInt(st.nextToken());
 
-        sumFromArray(arrLength, calCount);
-
+        sumFromArray(arrLength);
+        subtractArrayFromArray(calCount);
     }
 }
