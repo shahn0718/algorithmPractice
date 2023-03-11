@@ -40,8 +40,7 @@ public class ReminderSumFromArray {
         System.out.println(result);
     }
 
-
-
+    
     public static void main(String[] args) throws Exception {
 
         br = new BufferedReader(new InputStreamReader(System.in));
